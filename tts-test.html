@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head><title>TTS Test</title>
+<style>
+  body { background: #111; color: #0ff; font-family: monospace; padding: 20px; }
+  button { padding: 15px 30px; font-size: 18px; margin: 10px; cursor: pointer; background: #0ff; color: #000; border: none; border-radius: 8px; }
+  #log { white-space: pre-wrap; margin-top: 20px; padding: 10px; background: #222; border-radius: 8px; max-height: 400px; overflow-y: auto; }
+</style>
+</head>
+<body>
+<h1>🔊 JARVIS TTS Diagnostic</h1>
+<button onclick="testDirect()">Test 1: Direct speak()</button>
+<button onclick="testWithVoice()">Test 2: With specific voice</button>
+<button onclick="testMinimal()">Test 3: Minimal utterance</button>
+<button onclick="listVoices()">List Available Voices</button>
+<button onclick="checkState()">Check synth state</button>
+<div id="log"></div>
+
+<script>
+function log(msg) {
+  const el = document.getElementById('log');
+  el.textContent += new Date().toLocaleTimeString() + ' | ' + msg + '\n';
+  el.scrollTop = el.scrollHeight;
+  console.log(msg);
+}
+
+log('Page loaded. speechSynthesis available: ' + (typeof speechSynthesis !== 'undefined'));
+log('Voices on load: ' + speechSynthesis.getVoices().length);
+
+speechSynthesis.onvoiceschanged = () => {
+  const v = speechSynthesis.getVoices();
+  log('onvoiceschanged fired! Voices: ' + v.length);
+  v.forEach(voice => log('  → ' + voice.name + ' (' + voice.lang + ')'));
+};
+
+function testDirect() {
+  log('--- TEST 1: Direct speak ---');
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance('Hello Sir, I am Jarvis. Testing speech synthesis.');
+  u.lang = 'en-US';
+  u.volume = 1;
+  u.rate = 1;
+  u.pitch = 1;
+  u.onstart = () => log('✅ onstart fired!');
+  u.onend = () => log('✅ onend fired!');
+  u.onerror = (e) => log('❌ onerror: ' + e.error);
+  u.onboundary = () => log('  boundary');
+  log('Calling speechSynthesis.speak()...');
+  speechSynthesis.speak(u);
+  log('speak() called. speaking=' + speechSynthesis.speaking + ' pending=' + speechSynthesis.pending + ' paused=' + speechSynthesis.paused);
+  setTimeout(() => {
+    log('After 1s: speaking=' + speechSynthesis.speaking + ' pending=' + speechSynthesis.pending + ' paused=' + speechSynthesis.paused);
+  }, 1000);
+}
+
+function testWithVoice() {
+  log('--- TEST 2: With specific voice ---');
+  speechSynthesis.cancel();
+  const voices = speechSynthesis.getVoices();
+  log('Available voices: ' + voices.length);
+  if (voices.length === 0) { log('❌ No voices available!'); return; }
+  const voice = voices.find(v => v.name.includes('David')) || voices.find(v => v.lang.startsWith('en')) || voices[0];
+  log('Using voice: ' + voice.name + ' (' + voice.lang + ')');
+  const u = new SpeechSynthesisUtterance('Testing with a specific voice. Can you hear me now?');
+  u.voice = voice;
+  u.lang = voice.lang;
+  u.volume = 1;
+  u.onstart = () => log('✅ onstart fired!');
+  u.onend = () => log('✅ onend fired!');
+  u.onerror = (e) => log('❌ onerror: ' + e.error);
+  speechSynthesis.speak(u);
+  log('speak() called.');
+}
+
+function testMinimal() {
+  log('--- TEST 3: Absolute minimal ---');
+  speechSynthesis.cancel();
+  setTimeout(() => {
+    const u = new SpeechSynthesisUtterance('Test');
+    u.onstart = () => log('✅ onstart');
+    u.onend = () => log('✅ onend');
+    u.onerror = (e) => log('❌ error: ' + e.error);
+    speechSynthesis.speak(u);
+    log('Minimal speak() called.');
+  }, 100);
+}
+
+function listVoices() {
+  log('--- VOICE LIST ---');
+  const v = speechSynthesis.getVoices();
+  log('Total voices: ' + v.length);
+  v.forEach(voice => log('  ' + voice.name + ' | ' + voice.lang + ' | local=' + voice.localService));
+}
+
+function checkState() {
+  log('--- SYNTH STATE ---');
+  log('speaking: ' + speechSynthesis.speaking);
+  log('pending: ' + speechSynthesis.pending);
+  log('paused: ' + speechSynthesis.paused);
+}
+</script>
+</body>
+</html>

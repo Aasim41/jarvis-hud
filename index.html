@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" style="background:#040914;color:#e0f7fa;">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="J.A.R.V.I.S — Personal AI Dashboard & Assistant">
+  <title>J.A.R.V.I.S</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="./assets/index-DACSoJjb.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-D5Bhptgh.css">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="J.A.R.V.I.S">
+  <meta name="theme-color" content="#040914">
+  <script>
+    window.__JARVIS_ENV__ = window.__JARVIS_ENV__ || {};
+    try {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', 'https://gist.githubusercontent.com/Aasim41/e7a1872adc3b4f26d9be72b738ef41a7/raw/jarvis_env.json', false);
+      xhr.send(null);
+      if (xhr.status === 200) {
+        Object.assign(window.__JARVIS_ENV__, JSON.parse(xhr.responseText));
+      }
+    } catch (_) {}
+  </script>
+</head>
+<body style="background:#040914;color:#e0f7fa;margin:0;">
+  <div id="app">
+    <!-- Global HUD Decorative Overlay -->
+    <div class="jarvis-hud-overlay">
+      <!-- Corners -->
+      <div class="hud-corner top-left"></div>
+      <div class="hud-corner top-right"></div>
+      <div class="hud-corner bottom-left"></div>
+      <div class="hud-corner bottom-right"></div>
+      <!-- Radars -->
+      <div class="hud-radar radar-left">
+        <div class="radar-ring r1"></div>
+        <div class="radar-ring r2"></div>
+        <div class="radar-sweep"></div>
+      </div>
+      <div class="hud-radar radar-right">
+        <div class="radar-ring r1"></div>
+        <div class="radar-ring r2 dashed"></div>
+        <div class="radar-core"></div>
+      </div>
+    </div>
+
+    <!-- Agent Status Dock -->
+    <div class="jarvis-agent-dock" id="agent-dock"></div>
+
+    <div class="jarvis-dashboard">
+      <div class="jarvis-card jarvis-greeting-card" id="greeting-widget">
+        <div id="arc-reactor-container">
+          <div class="arc-reactor">
+            <div class="core"></div>
+            <div class="ring inner"></div>
+            <div class="ring outer"></div>
+          </div>
+        </div>
+        <div id="greeting-content"></div>
+      </div>
+      <div class="jarvis-card" id="clock-widget"></div>
+      <div class="jarvis-card" id="weather-widget"></div>
+      <div class="jarvis-card" id="calendar-widget"></div>
+      <div class="jarvis-card" id="stats-widget"></div>
+      <div class="jarvis-card" id="system-controls-widget"></div>
+      <div class="jarvis-card" id="tasks-widget"></div>
+      <div class="jarvis-card" id="github-widget"></div>
+      <div class="jarvis-card" id="music-widget"></div>
+      <div class="jarvis-card" id="notes-widget"></div>
+
+      <div class="jarvis-card" id="neural-widget"></div>
+      <div class="jarvis-card" id="latency-widget"></div>
+      <div class="jarvis-card" id="bot-teams-widget"></div>
+      <div class="jarvis-card jarvis-command-card" id="command-widget"></div>
+    </div>
+    
+    <!-- Global News Ticker -->
+    <div id="news-ticker"></div>
+  </div>
+</body>
+</html>
