@@ -18,14 +18,14 @@
     window.__JARVIS_ENV__ = window.__JARVIS_ENV__ || {};
     try {
       var xhr = new XMLHttpRequest();
-      xhr.open('GET', 'https://gist.githubusercontent.com/Aasim41/e7a1872adc3b4f26d9be72b738ef41a7/raw/jarvis_env.json', false);
+      xhr.open('GET', 'https://gist.githubusercontent.com/Aasim41/e7a1872adc3b4f26d9be72b738ef41a7/raw/jarvis_env.json?t=' + Date.now(), false);
       xhr.send(null);
       if (xhr.status === 200) {
         Object.assign(window.__JARVIS_ENV__, JSON.parse(xhr.responseText));
       }
     } catch (_) {}
   </script>
-  <script type="module" crossorigin src="./assets/index-C8t0CaDp.js"></script>
+  <script type="module" crossorigin src="./assets/index-DQbO6j9P.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/index-D5Bhptgh.css">
 </head>
 <body style="background:#040914;color:#e0f7fa;margin:0;">
@@ -82,6 +82,6 @@
     
     <!-- Global News Ticker -->
     <div id="news-ticker"></div>
-  </div>
+  </div>
 </body>
 </html>
