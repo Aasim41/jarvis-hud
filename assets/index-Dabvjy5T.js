@@ -3458,7 +3458,104 @@ MANDATORY DIRECTIVE FOR ACTIVE DOCUMENT & QUESTION ANSWERING:
       from { opacity: 0; transform: translateY(12px); }
       to { opacity: 1; transform: translateY(0); }
     }
-  `,document.head.appendChild(e)}function Yl(e,t=`info`){let n=document.querySelector(`.jarvis-controls-toast`);n&&n.remove();let r=document.createElement(`div`);r.className=`jarvis-controls-toast`,r.innerHTML=`<span style="color:#00d4ff; font-weight:bold;">${t===`success`?`✓`:t===`error`?`✕`:`⚡`}</span> <span>${e}</span>`,document.body.appendChild(r),setTimeout(()=>{r.style.opacity=`0`,r.style.transition=`opacity 0.3s`,setTimeout(()=>r.remove(),300)},2800)}function Xl(e,t=`info`){let n=new Date().toLocaleTimeString(`en-US`,{hour12:!1});if(Ul.push({time:n,text:e,type:t}),Ul.length>50&&Ul.shift(),Wl){let r=document.createElement(`div`);r.className=`terminal-line ${t}`,r.textContent=`[${n}] ${e}`,Wl.appendChild(r),Wl.scrollTop=Wl.scrollHeight}}async function $(e,t,n=`execute`,r={}){if(typeof navigator<`u`&&navigator.vibrate)try{navigator.vibrate(25)}catch{}Xl(`DISPATCH > ${e} [${t||n}]`,`cmd`),Yl(`Directing: ${e}...`);let i={rawCmd:t,label:e,action:n===`sleep`?`sleep`:t||n,post_antigravity:!!r?.post_antigravity,...r};try{c(i.action,i)}catch{}try{l(i.action,i)}catch{}try{let i;i=n===`sleep`?await fetch(`${s()}/system/control`,{method:`POST`,headers:{"Content-Type":`application/json`},body:JSON.stringify({action:`sleep`,force:!0,delayed:!!r?.post_antigravity})}):n===`speak`?await fetch(`${s()}/system/speak`,{method:`POST`,headers:{"Content-Type":`application/json`},body:JSON.stringify({text:r?.text||t||`Hello Sir`})}):n===`screenshot`?await fetch(`${s()}/system/screenshot`,{method:`POST`,headers:{"Content-Type":`application/json`}}):n===`open_url`?await fetch(`${s()}/execute`,{method:`POST`,headers:{"Content-Type":`application/json`},body:JSON.stringify({command:`start "" "${r?.url||t}"`})}):n===`open_app`?await fetch(`${s()}/apps/launch`,{method:`POST`,headers:{"Content-Type":`application/json`},body:JSON.stringify({app:r?.app||t})}):n===`media`?await fetch(`${s()}/apps/media`,{method:`POST`,headers:{"Content-Type":`application/json`},body:JSON.stringify({action:r?.action||`play_pause`})}):await fetch(`${s()}/execute`,{method:`POST`,headers:{"Content-Type":`application/json`},body:JSON.stringify({command:t})});let a=await i.json().catch(()=>({success:!0,message:`Executed`}));return a.queued?(Xl(`QUEUED   > ${a.message||`Stored in sovereign queue for Workstation`}`,`warning`),Yl(`Directive Queued: ${e}`,`success`)):a.success===!1?(Xl(`WARNING  > ${a.message||a.error||`Workstation unreachable`}`,`error`),Yl(`Dispatched via Gist: ${e}`,`warning`)):(Xl(`EXECUTED > Directive acknowledged (${e})`,`success`),Yl(`Success: ${e}`,`success`)),a}catch{return Xl(`SATELLITE> Relayed via Gist (${e})`,`info`),Yl(`Relayed via Satellite: ${e}`,`info`),{success:!0,relayed:!0}}}function Zl(e){if(!Kl)return;let t=ql.find(t=>t.id===e)||ql[8],n=``;switch(t.id){case`lock_laptop`:n=`
+  `,document.head.appendChild(e)}function Yl(e,t=`info`){let n=document.querySelector(`.jarvis-controls-toast`);n&&n.remove();let r=document.createElement(`div`);r.className=`jarvis-controls-toast`,r.innerHTML=`<span style="color:#00d4ff; font-weight:bold;">${t===`success`?`✓`:t===`error`?`✕`:`⚡`}</span> <span>${e}</span>`,document.body.appendChild(r),setTimeout(()=>{r.style.opacity=`0`,r.style.transition=`opacity 0.3s`,setTimeout(()=>r.remove(),300)},2800)}function Xl(e,t=`info`){let n=new Date().toLocaleTimeString(`en-US`,{hour12:!1});if(Ul.push({time:n,text:e,type:t}),Ul.length>50&&Ul.shift(),Wl){let r=document.createElement(`div`);r.className=`terminal-line ${t}`,r.textContent=`[${n}] ${e}`,Wl.appendChild(r),Wl.scrollTop=Wl.scrollHeight}}async function $(e,t,n=`execute`,r={}){if(typeof navigator<`u`&&navigator.vibrate)try{navigator.vibrate(25)}catch{}Xl(`DISPATCH > ${e} [${t||n}]`,`cmd`),Yl(`Directing: ${e}...`);let i={rawCmd:t,label:e,action:n===`sleep`?`sleep`:t||n,post_antigravity:!!r?.post_antigravity,...r};try{c(i.action,i)}catch{}try{l(i.action,i)}catch{}try{let i;i=n===`sleep`?await fetch(`${s()}/system/control`,{method:`POST`,headers:{"Content-Type":`application/json`},body:JSON.stringify({action:`sleep`,force:!0,delayed:!!r?.post_antigravity})}):n===`speak`?await fetch(`${s()}/system/speak`,{method:`POST`,headers:{"Content-Type":`application/json`},body:JSON.stringify({text:r?.text||t||`Hello Sir`})}):n===`screenshot`?await fetch(`${s()}/system/screenshot`,{method:`POST`,headers:{"Content-Type":`application/json`}}):n===`open_url`?await fetch(`${s()}/execute`,{method:`POST`,headers:{"Content-Type":`application/json`},body:JSON.stringify({command:`start "" "${r?.url||t}"`})}):n===`open_app`?await fetch(`${s()}/apps/launch`,{method:`POST`,headers:{"Content-Type":`application/json`},body:JSON.stringify({app:r?.app||t})}):n===`media`?await fetch(`${s()}/apps/media`,{method:`POST`,headers:{"Content-Type":`application/json`},body:JSON.stringify({action:r?.action||`play_pause`})}):await fetch(`${s()}/execute`,{method:`POST`,headers:{"Content-Type":`application/json`},body:JSON.stringify({command:t})});let a=await i.json().catch(()=>({success:!0,message:`Executed`}));return a.queued?(Xl(`QUEUED   > ${a.message||`Stored in sovereign queue for Workstation`}`,`warning`),Yl(`Directive Queued: ${e}`,`success`)):a.success===!1?(Xl(`WARNING  > ${a.message||a.error||`Workstation unreachable`}`,`error`),Yl(`Dispatched via Gist: ${e}`,`warning`)):(Xl(`EXECUTED > Directive acknowledged (${e})`,`success`),Yl(`Success: ${e}`,`success`)),a}catch{return Xl(`SATELLITE> Relayed via Gist (${e})`,`info`),Yl(`Relayed via Satellite: ${e}`,`info`),{success:!0,relayed:!0}}}function Zl(e){if(!Kl)return;let t=ql.find(t=>t.id===e)||ql[8],n=``;switch(t.id){case`open_website`:n=`
+        <div class="arrc-canvas-graphic">🌐</div>
+        <div class="arrc-canvas-title">Open Any Website</div>
+        <div class="arrc-canvas-sub">Launch any web destination on phone and PC workstation</div>
+        <input type="text" class="arrc-canvas-input" id="canvas-web-url" placeholder="https://..." value="https://github.com/Aasim41">
+        <div class="arrc-canvas-controls">
+          <button class="arrc-action-btn" id="canvas-btn-open-url">🌐 Open Website Now</button>
+          <div style="display:flex;gap:4px;width:100%;">
+            <button class="arrc-action-btn secondary" style="flex:1;font-size:0.65rem;" id="web-pre-gh">GitHub</button>
+            <button class="arrc-action-btn secondary" style="flex:1;font-size:0.65rem;" id="web-pre-gpt">ChatGPT</button>
+            <button class="arrc-action-btn secondary" style="flex:1;font-size:0.65rem;" id="web-pre-yt">YouTube</button>
+          </div>
+        </div>
+      `;break;case`google_search`:n=`
+        <div class="arrc-canvas-graphic">🔍</div>
+        <div class="arrc-canvas-title">Google Web Search</div>
+        <div class="arrc-canvas-sub">Execute immediate web intelligence queries on phone and PC</div>
+        <input type="text" class="arrc-canvas-input" id="canvas-search-query" placeholder="Search Google for..." value="JUET Webkiosk portal">
+        <div class="arrc-canvas-controls">
+          <button class="arrc-action-btn" id="canvas-btn-search">🔍 Search Google</button>
+          <div style="display:flex;gap:4px;width:100%;">
+            <button class="arrc-action-btn secondary" style="flex:1;font-size:0.65rem;" id="search-pre-webkiosk">JUET</button>
+            <button class="arrc-action-btn secondary" style="flex:1;font-size:0.65rem;" id="search-pre-news">Tech News</button>
+            <button class="arrc-action-btn secondary" style="flex:1;font-size:0.65rem;" id="search-pre-weather">Weather</button>
+          </div>
+        </div>
+      `;break;case`play_youtube`:n=`
+        <div class="arrc-canvas-graphic">▶️</div>
+        <div class="arrc-canvas-title">Play on YouTube</div>
+        <div class="arrc-canvas-sub">Stream music, podcasts, and videos instantly on phone and PC</div>
+        <input type="text" class="arrc-canvas-input" id="canvas-yt-query" placeholder="Song or video title..." value="Agar Tum Saath Ho">
+        <div class="arrc-canvas-controls">
+          <button class="arrc-action-btn" id="canvas-btn-yt-play">▶️ Stream on YouTube</button>
+          <div style="display:flex;gap:4px;width:100%;">
+            <button class="arrc-action-btn secondary" style="flex:1;font-size:0.65rem;" id="yt-pre-arijit">Arijit Singh</button>
+            <button class="arrc-action-btn secondary" style="flex:1;font-size:0.65rem;" id="yt-pre-lofi">Lo-Fi Beats</button>
+            <button class="arrc-action-btn secondary" style="flex:1;font-size:0.65rem;" id="yt-pre-coke">Coke Studio</button>
+          </div>
+        </div>
+      `;break;case`open_apps`:n=`
+        <div class="arrc-canvas-graphic">📱</div>
+        <div class="arrc-canvas-title">Open Applications</div>
+        <div class="arrc-canvas-sub">Launch software and developer environments on workstation</div>
+        <div class="arrc-canvas-controls" style="display:grid;grid-template-columns:1fr 1fr;gap:5px;">
+          <button class="arrc-action-btn" id="app-launch-vscode">💻 VS Code</button>
+          <button class="arrc-action-btn" id="app-launch-chrome">🌐 Chrome</button>
+          <button class="arrc-action-btn secondary" id="app-launch-terminal">⚡ Terminal</button>
+          <button class="arrc-action-btn secondary" id="app-launch-notepad">📝 Notepad</button>
+          <button class="arrc-action-btn secondary" id="app-launch-spotify">🎵 Spotify</button>
+          <button class="arrc-action-btn secondary" id="app-launch-taskmgr">📊 Task Mgr</button>
+        </div>
+      `;break;case`take_notes`:n=`
+        <div class="arrc-canvas-graphic">📝</div>
+        <div class="arrc-canvas-title">Take Notes</div>
+        <div class="arrc-canvas-sub">Save notes directly into J.A.R.V.I.S Living Memory and disk</div>
+        <textarea class="arrc-canvas-input" id="canvas-take-note-text" style="height:60px;resize:none;" placeholder="Enter note or thought..."></textarea>
+        <div class="arrc-canvas-controls">
+          <button class="arrc-action-btn" id="canvas-btn-take-note">💾 Store in Living Memory & PC</button>
+        </div>
+      `;break;case`read_notes`:let e=``;try{let t=JSON.parse(localStorage.getItem(`jarvis_sovereign_notes`)||`[]`);e=t.length>0?t.slice(0,5).map(e=>`• [${e.time||`Note`}] ${e.text}`).join(`<br>`):`• Minneee (Aachal) birthday: July 13th.<br>• JUET Guna B.Tech Data Science 8.05 CGPA.<br>• J.A.R.V.I.S sovereign mobile HUD v2.1 online.`}catch{e=`• Minneee (Aachal) birthday: July 13th.<br>• JUET Guna B.Tech Data Science 8.05 CGPA.`}n=`
+        <div class="arrc-canvas-graphic">📖</div>
+        <div class="arrc-canvas-title">Read Saved Notes</div>
+        <div class="arrc-canvas-sub">Recalls facts, ideas, and directives from living memory</div>
+        <div id="canvas-notes-display" style="background:rgba(0,212,255,0.06);border:1px solid rgba(0,212,255,0.2);border-radius:6px;padding:8px;width:100%;box-sizing:border-box;font-size:0.7rem;max-height:90px;overflow-y:auto;text-align:left;color:#cbd5e1;margin-bottom:0.4rem;">
+          ${e}
+        </div>
+        <div class="arrc-canvas-controls">
+          <div style="display:flex;gap:4px;width:100%;">
+            <button class="arrc-action-btn" style="flex:1;" id="canvas-btn-refresh-notes">🔄 Refresh Notes</button>
+            <button class="arrc-action-btn secondary" style="flex:1;" id="canvas-btn-speak-notes">🗣️ Read Aloud</button>
+          </div>
+        </div>
+      `;break;case`store_notes`:n=`
+        <div class="arrc-canvas-graphic">💾</div>
+        <div class="arrc-canvas-title">Store Notes</div>
+        <div class="arrc-canvas-sub">Save persistent structured knowledge into the sovereign cloud vault</div>
+        <input type="text" class="arrc-canvas-input" id="canvas-vault-note-title" placeholder="Topic or title (e.g. Project Idea, Meeting)..." value="J.A.R.V.I.S Directive">
+        <textarea class="arrc-canvas-input" id="canvas-vault-note-text" style="height:55px;resize:none;" placeholder="Key facts, decisions, or code snippets..."></textarea>
+        <div class="arrc-canvas-controls">
+          <button class="arrc-action-btn" id="canvas-btn-store-vault-note">💾 Save into Vault</button>
+        </div>
+      `;break;case`battery_time`:n=`
+        <div class="arrc-canvas-graphic">🔋</div>
+        <div class="arrc-canvas-title">Battery & Telemetry</div>
+        <div class="arrc-canvas-sub">Real-time device power, hardware health, and memory optimization</div>
+        <div id="canvas-battery-card" style="background:rgba(0,212,255,0.06);border:1px solid rgba(0,212,255,0.2);border-radius:6px;padding:8px;width:100%;box-sizing:border-box;margin-bottom:0.5rem;font-size:0.72rem;display:grid;grid-template-columns:1fr 1fr;gap:6px;text-align:left;">
+          <div>⚡ Status: <b style="color:#2ed573;" id="bat-status-val">Optimal</b></div>
+          <div>🔋 Level: <b style="color:#00d4ff;" id="bat-level-val">100%</b></div>
+          <div>🕒 System Time: <b style="color:#ffd32a;">${new Date().toLocaleTimeString()}</b></div>
+          <div>💻 Mode: <b style="color:#00d4ff;">High Performance</b></div>
+        </div>
+        <div class="arrc-canvas-controls">
+          <div style="display:flex;gap:4px;width:100%;">
+            <button class="arrc-action-btn" style="flex:1;" id="canvas-btn-refresh-battery">⚡ Refresh Power</button>
+            <button class="arrc-action-btn secondary" style="flex:1;" id="canvas-btn-clean-ram">🧹 Clean RAM</button>
+          </div>
+        </div>
+      `;break;case`lock_laptop`:n=`
         <div class="arrc-canvas-graphic">🔒</div>
         <div class="arrc-canvas-title">Laptop Lock Screen</div>
         <div class="arrc-canvas-sub">Instant hardware lock or coordinated post-task shutdown arming</div>
@@ -3466,39 +3563,6 @@ MANDATORY DIRECTIVE FOR ACTIVE DOCUMENT & QUESTION ANSWERING:
           <button class="arrc-action-btn" id="canvas-btn-lock-instant">⚡ Lock Workstation Now</button>
           <button class="arrc-action-btn secondary" id="canvas-btn-lock-task">🛡️ Lock After Current Antigravity Task</button>
           <button class="arrc-action-btn secondary" id="canvas-btn-unlock">🔓 Unlock PC with PIN (2006)</button>
-        </div>
-      `;break;case`laptop_speaks`:n=`
-        <div class="arrc-canvas-graphic">🗣️</div>
-        <div class="arrc-canvas-title">Workstation Speech Synthesis</div>
-        <div class="arrc-canvas-sub">Speak any sentence aloud on your laptop hardware via Windows SAPI</div>
-        <input type="text" class="arrc-canvas-input" id="canvas-speech-text" placeholder="Type text to speak aloud..." value="Sir, all systems are operating at peak capacity.">
-        <div class="arrc-canvas-controls">
-          <button class="arrc-action-btn" id="canvas-btn-speak">🗣️ Speak Aloud on Laptop</button>
-          <div style="display:flex;gap:4px;width:100%;">
-            <button class="arrc-action-btn secondary" style="flex:1;font-size:0.65rem;" id="speech-pre-1">"Task Finished"</button>
-            <button class="arrc-action-btn secondary" style="flex:1;font-size:0.65rem;" id="speech-pre-2">"Wake Up Aasim"</button>
-          </div>
-        </div>
-      `;break;case`screenshots`:n=`
-        <div class="arrc-canvas-graphic">📸</div>
-        <div class="arrc-canvas-title">Laptop Screen Capture</div>
-        <div class="arrc-canvas-sub">Capture live full-screen display of your Windows workstation</div>
-        <div id="screenshot-preview-box" style="margin-bottom:0.5rem;font-size:0.7rem;color:#00d4ff;">Saved to Pictures/Screenshots</div>
-        <div class="arrc-canvas-controls">
-          <button class="arrc-action-btn" id="canvas-btn-screenshot">📸 Capture Screen Now</button>
-        </div>
-      `;break;case`battery_time`:n=`
-        <div class="arrc-canvas-graphic">🔋</div>
-        <div class="arrc-canvas-title">Battery & Telemetry</div>
-        <div class="arrc-canvas-sub">Workstation Power: 100% (AC Adapter Plugged In)</div>
-        <div style="background:rgba(0,212,255,0.06);border:1px solid rgba(0,212,255,0.2);border-radius:6px;padding:8px;width:100%;box-sizing:border-box;margin-bottom:0.5rem;font-size:0.72rem;display:grid;grid-template-columns:1fr 1fr;gap:6px;text-align:left;">
-          <div>⚡ Status: <b style="color:#2ed573;">Optimal</b></div>
-          <div>🌡️ Temp: <b style="color:#00d4ff;">39.5°C</b></div>
-          <div>🕒 System Time: <b style="color:#ffd32a;">${new Date().toLocaleTimeString()}</b></div>
-          <div>💻 Mode: <b style="color:#00d4ff;">Performance</b></div>
-        </div>
-        <div class="arrc-canvas-controls">
-          <button class="arrc-action-btn" id="canvas-btn-clean-ram">🧹 Clean RAM Cache</button>
         </div>
       `;break;case`music_volume`:n=`
         <div class="arrc-canvas-graphic">🎵</div>
@@ -3512,69 +3576,30 @@ MANDATORY DIRECTIVE FOR ACTIVE DOCUMENT & QUESTION ANSWERING:
           </div>
           <button class="arrc-action-btn secondary" id="canvas-media-mute">🔇 Toggle Mute / Unmute</button>
         </div>
-      `;break;case`open_website`:n=`
-        <div class="arrc-canvas-graphic">🌐</div>
-        <div class="arrc-canvas-title">Open Any Website</div>
-        <div class="arrc-canvas-sub">Launch any web destination directly in your default browser on PC</div>
-        <input type="text" class="arrc-canvas-input" id="canvas-web-url" placeholder="https://..." value="https://github.com/Aasim41">
+      `;break;case`laptop_speaks`:n=`
+        <div class="arrc-canvas-graphic">🗣️</div>
+        <div class="arrc-canvas-title">Speech Synthesis</div>
+        <div class="arrc-canvas-sub">Audible voice broadcast on phone speakers and PC hardware</div>
+        <input type="text" class="arrc-canvas-input" id="canvas-speech-text" placeholder="Type text to speak aloud..." value="Sir, all systems are operating at peak capacity.">
         <div class="arrc-canvas-controls">
-          <button class="arrc-action-btn" id="canvas-btn-open-url">🌐 Open Website on PC</button>
+          <button class="arrc-action-btn" id="canvas-btn-speak">🗣️ Speak Aloud on Laptop & Phone</button>
           <div style="display:flex;gap:4px;width:100%;">
-            <button class="arrc-action-btn secondary" style="flex:1;font-size:0.65rem;" id="web-pre-gh">GitHub</button>
-            <button class="arrc-action-btn secondary" style="flex:1;font-size:0.65rem;" id="web-pre-gpt">ChatGPT</button>
-            <button class="arrc-action-btn secondary" style="flex:1;font-size:0.65rem;" id="web-pre-yt">YouTube</button>
+            <button class="arrc-action-btn secondary" style="flex:1;font-size:0.65rem;" id="speech-pre-1">"Task Finished"</button>
+            <button class="arrc-action-btn secondary" style="flex:1;font-size:0.65rem;" id="speech-pre-2">"Wake Up Aasim"</button>
           </div>
         </div>
-      `;break;case`google_search`:n=`
-        <div class="arrc-canvas-graphic">🔍</div>
-        <div class="arrc-canvas-title">Google Web Search</div>
-        <div class="arrc-canvas-sub">Execute immediate web queries on your workstation screen</div>
-        <input type="text" class="arrc-canvas-input" id="canvas-search-query" placeholder="Search Google for..." value="JUET Webkiosk portal">
+      `;break;case`screenshots`:n=`
+        <div class="arrc-canvas-graphic">📸</div>
+        <div class="arrc-canvas-title">Laptop Screen Capture</div>
+        <div class="arrc-canvas-sub">Capture live full-screen display of your Windows workstation</div>
+        <div id="screenshot-preview-box" style="margin-bottom:0.5rem;font-size:0.7rem;color:#00d4ff;">Saved to Pictures/Screenshots</div>
         <div class="arrc-canvas-controls">
-          <button class="arrc-action-btn" id="canvas-btn-search">🔍 Search on PC</button>
+          <button class="arrc-action-btn" id="canvas-btn-screenshot">📸 Capture Screen Now</button>
         </div>
-      `;break;case`play_youtube`:n=`
-        <div class="arrc-canvas-graphic">▶️</div>
-        <div class="arrc-canvas-title">Play on YouTube</div>
-        <div class="arrc-canvas-sub">Search and stream songs, podcasts, and videos instantly</div>
-        <input type="text" class="arrc-canvas-input" id="canvas-yt-query" placeholder="Song or video title..." value="Agar Tum Saath Ho">
-        <div class="arrc-canvas-controls">
-          <button class="arrc-action-btn" id="canvas-btn-yt-play">▶️ Stream on YouTube</button>
-        </div>
-      `;break;case`open_apps`:n=`
-        <div class="arrc-canvas-graphic">📱</div>
-        <div class="arrc-canvas-title">Open Applications</div>
-        <div class="arrc-canvas-sub">Launch workstation software and developer environments</div>
-        <div class="arrc-canvas-controls" style="display:grid;grid-template-columns:1fr 1fr;gap:4px;">
-          <button class="arrc-action-btn" id="app-launch-vscode">💻 VS Code</button>
-          <button class="arrc-action-btn" id="app-launch-chrome">🌐 Chrome</button>
-          <button class="arrc-action-btn secondary" id="app-launch-terminal">⚡ Terminal</button>
-          <button class="arrc-action-btn secondary" id="app-launch-notepad">📝 Notepad</button>
-          <button class="arrc-action-btn secondary" id="app-launch-spotify">🎵 Spotify</button>
-          <button class="arrc-action-btn secondary" id="app-launch-taskmgr">📊 Task Mgr</button>
-        </div>
-      `;break;case`take_notes`:case`store_notes`:n=`
-        <div class="arrc-canvas-graphic">📝</div>
-        <div class="arrc-canvas-title">Take & Store Notes</div>
-        <div class="arrc-canvas-sub">Save notes directly into J.A.R.V.I.S Living Memory and local disk</div>
-        <textarea class="arrc-canvas-input" id="canvas-note-text" style="height:55px;resize:none;" placeholder="Enter quick note..."></textarea>
-        <div class="arrc-canvas-controls">
-          <button class="arrc-action-btn" id="canvas-btn-save-note">💾 Store Note Permanently</button>
-        </div>
-      `;break;case`read_notes`:n=`
-        <div class="arrc-canvas-graphic">📖</div>
-        <div class="arrc-canvas-title">Read Saved Notes</div>
-        <div class="arrc-canvas-sub">Recalls facts, project ideas, and notes from memory</div>
-        <div id="canvas-notes-display" style="background:rgba(0,212,255,0.06);border:1px solid rgba(0,212,255,0.2);border-radius:6px;padding:6px;width:100%;box-sizing:border-box;font-size:0.68rem;max-height:80px;overflow-y:auto;text-align:left;color:#cbd5e1;margin-bottom:0.4rem;">
-          • Minneee (Aachal) birthday: July 13th.<br>• JUET Guna B.Tech Data Science 8.05 CGPA.<br>• J.A.R.V.I.S sovereign mobile HUD v2.1 online.
-        </div>
-        <div class="arrc-canvas-controls">
-          <button class="arrc-action-btn secondary" id="canvas-btn-refresh-notes">🔄 Refresh Notes</button>
-        </div>
-      `;break;case`talking_timers`:case`focus_sessions`:n=`
+      `;break;case`talking_timers`:n=`
         <div class="arrc-canvas-graphic">⏱️</div>
-        <div class="arrc-canvas-title">${t.name}</div>
-        <div class="arrc-canvas-sub">Voice-announced countdown timer with audible alert upon finish</div>
+        <div class="arrc-canvas-title">Timers That Talk</div>
+        <div class="arrc-canvas-sub">Voice-announced countdown timer with audible chime on finish</div>
         <div class="arrc-canvas-controls">
           <div style="display:flex;gap:4px;width:100%;">
             <button class="arrc-action-btn secondary" style="flex:1;" id="timer-5m">5 Min</button>
@@ -3586,35 +3611,42 @@ MANDATORY DIRECTIVE FOR ACTIVE DOCUMENT & QUESTION ANSWERING:
       `;break;case`draft_emails`:n=`
         <div class="arrc-canvas-graphic">✉️</div>
         <div class="arrc-canvas-title">Draft & Send Email</div>
-        <div class="arrc-canvas-sub">Compose an email via Gmail integration or open inbox</div>
+        <div class="arrc-canvas-sub">Compose and dispatch email via Gmail integration</div>
         <input type="text" class="arrc-canvas-input" id="canvas-email-to" placeholder="To: recipient@gmail.com">
         <input type="text" class="arrc-canvas-input" id="canvas-email-subject" placeholder="Subject..." value="Update from Aasim">
         <div class="arrc-canvas-controls">
-          <button class="arrc-action-btn" id="canvas-btn-open-gmail">✉️ Open Gmail on PC</button>
+          <button class="arrc-action-btn" id="canvas-btn-open-gmail">✉️ Open Gmail Draft</button>
         </div>
       `;break;case`directions`:n=`
         <div class="arrc-canvas-graphic">🧭</div>
         <div class="arrc-canvas-title">Google Maps Directions</div>
-        <div class="arrc-canvas-sub">Route calculation and transit navigation</div>
+        <div class="arrc-canvas-sub">Live route calculation and GPS transit navigation</div>
         <input type="text" class="arrc-canvas-input" id="canvas-maps-dest" placeholder="Destination..." value="Guna Railway Station">
         <div class="arrc-canvas-controls">
           <button class="arrc-action-btn" id="canvas-btn-open-maps">🧭 Launch Directions</button>
+          <div style="display:flex;gap:4px;width:100%;">
+            <button class="arrc-action-btn secondary" style="flex:1;font-size:0.65rem;" id="maps-pre-guna">Guna Stn</button>
+            <button class="arrc-action-btn secondary" style="flex:1;font-size:0.65rem;" id="maps-pre-mau">Mau Home</button>
+            <button class="arrc-action-btn secondary" style="flex:1;font-size:0.65rem;" id="maps-pre-delhi">Delhi</button>
+          </div>
         </div>
       `;break;case`weather`:n=`
         <div class="arrc-canvas-graphic">⛅</div>
         <div class="arrc-canvas-title">Weather & Atmospheric Pulse</div>
         <div class="arrc-canvas-sub">Live conditions: <b>Raghogarh / Guna (21°C, Clear Sky)</b></div>
-        <div style="display:flex;gap:4px;width:100%;margin-bottom:0.5rem;font-size:0.68rem;text-align:left;">
-          <div style="flex:1;background:rgba(0,212,255,0.06);padding:6px;border-radius:4px;">💧 Humidity: 43%</div>
-          <div style="flex:1;background:rgba(0,212,255,0.06);padding:6px;border-radius:4px;">💨 Wind: 3.5 m/s</div>
-        </div>
+        <input type="text" class="arrc-canvas-input" id="canvas-weather-city" placeholder="City name..." value="Guna">
         <div class="arrc-canvas-controls">
-          <button class="arrc-action-btn" id="canvas-btn-weather-delhi">⛅ Check Delhi Weather</button>
+          <button class="arrc-action-btn" id="canvas-btn-check-weather">⛅ Check Live Weather</button>
+          <div style="display:flex;gap:4px;width:100%;">
+            <button class="arrc-action-btn secondary" style="flex:1;font-size:0.65rem;" id="wth-pre-guna">Guna</button>
+            <button class="arrc-action-btn secondary" style="flex:1;font-size:0.65rem;" id="wth-pre-mau">Mau</button>
+            <button class="arrc-action-btn secondary" style="flex:1;font-size:0.65rem;" id="wth-pre-delhi">Delhi</button>
+          </div>
         </div>
       `;break;case`work_study_modes`:n=`
         <div class="arrc-canvas-graphic">💼</div>
         <div class="arrc-canvas-title">Work & Study Modes</div>
-        <div class="arrc-canvas-sub">Sets PC to peak productivity: launches VS Code, mutes alerts, sets focus</div>
+        <div class="arrc-canvas-sub">Engage peak productivity: launches VS Code, mutes distractions, sets focus</div>
         <div class="arrc-canvas-controls">
           <button class="arrc-action-btn" id="canvas-btn-workmode">💼 Engage Work / Study Mode</button>
           <button class="arrc-action-btn secondary" id="canvas-btn-killchrome">🛑 Kill Chrome Processes</button>
@@ -3627,13 +3659,44 @@ MANDATORY DIRECTIVE FOR ACTIVE DOCUMENT & QUESTION ANSWERING:
         <div class="arrc-canvas-controls">
           <button class="arrc-action-btn" id="canvas-btn-search-file">📂 Search & Open File</button>
         </div>
-      `;break;case`deadline_sets`:case`what_is_due`:case`mark_submitted`:n=`
-        <div class="arrc-canvas-graphic">📅</div>
-        <div class="arrc-canvas-title">${t.name}</div>
-        <div class="arrc-canvas-sub">Academic deadlines, assignments, and submission tracker</div>
-        <div style="background:rgba(0,212,255,0.06);border:1px solid rgba(0,212,255,0.2);border-radius:6px;padding:6px;width:100%;box-sizing:border-box;font-size:0.68rem;text-align:left;color:#cbd5e1;margin-bottom:0.4rem;">
-          • Machine Learning Lab Quiz — Due Nov 2<br>• J.A.R.V.I.S Sovereign PWA — <b>Submitted (100%)</b>
+      `;break;case`focus_sessions`:n=`
+        <div class="arrc-canvas-graphic">🎯</div>
+        <div class="arrc-canvas-title">Focus Sessions</div>
+        <div class="arrc-canvas-sub">Pomodoro deep work intervals with audible voice checkpoints</div>
+        <div class="arrc-canvas-controls">
+          <div style="display:flex;gap:4px;width:100%;">
+            <button class="arrc-action-btn" style="flex:1;" id="focus-btn-25m">🎯 25m Pomodoro</button>
+            <button class="arrc-action-btn secondary" style="flex:1;" id="focus-btn-50m">⚡ 50m Deep Work</button>
+          </div>
+          <button class="arrc-action-btn secondary" id="focus-btn-cancel">🛑 End Session</button>
         </div>
+      `;break;case`deadline_sets`:n=`
+        <div class="arrc-canvas-graphic">📅</div>
+        <div class="arrc-canvas-title">Deadline Sets</div>
+        <div class="arrc-canvas-sub">Schedule academic deadlines, exam dates, and project milestones</div>
+        <input type="text" class="arrc-canvas-input" id="canvas-deadline-title" placeholder="Title: e.g. Machine Learning Lab Quiz" value="Data Science Project Submission">
+        <input type="text" class="arrc-canvas-input" id="canvas-deadline-date" placeholder="Date: e.g. Nov 5, 2026" value="${new Date(Date.now()+864e5*3).toLocaleDateString()}">
+        <div class="arrc-canvas-controls">
+          <button class="arrc-action-btn" id="canvas-btn-add-deadline">📅 Add Academic Deadline</button>
+        </div>
+      `;break;case`what_is_due`:let r=``;try{let e=JSON.parse(localStorage.getItem(`jarvis_deadlines`)||`[]`);r=e.length>0?e.map(e=>`• <b>${e.title}</b> — Due: ${e.date} ${e.status===`submitted`?`<span style="color:#2ed573;">[SUBMITTED]</span>`:`<span style="color:#ffd32a;">[PENDING]</span>`}`).join(`<br>`):`• Machine Learning Lab Quiz — Due Nov 2 [PENDING]<br>• J.A.R.V.I.S Sovereign PWA — <b>Submitted (100%)</b><br>• High Performance Computing Lab Assignment — Due Nov 6 [PENDING]`}catch{r=`• Machine Learning Lab Quiz — Due Nov 2 [PENDING]<br>• J.A.R.V.I.S Sovereign PWA — <b>Submitted (100%)</b>`}n=`
+        <div class="arrc-canvas-graphic">📋</div>
+        <div class="arrc-canvas-title">What Is Due</div>
+        <div class="arrc-canvas-sub">Review upcoming assignments, exams, and deliverables</div>
+        <div id="canvas-due-display" style="background:rgba(0,212,255,0.06);border:1px solid rgba(0,212,255,0.2);border-radius:6px;padding:8px;width:100%;box-sizing:border-box;font-size:0.7rem;max-height:90px;overflow-y:auto;text-align:left;color:#cbd5e1;margin-bottom:0.4rem;">
+          ${r}
+        </div>
+        <div class="arrc-canvas-controls">
+          <div style="display:flex;gap:4px;width:100%;">
+            <button class="arrc-action-btn" style="flex:1;" id="canvas-btn-refresh-due">📋 Refresh Due List</button>
+            <button class="arrc-action-btn secondary" style="flex:1;" id="canvas-btn-speak-due">🗣️ Speak What Is Due</button>
+          </div>
+        </div>
+      `;break;case`mark_submitted`:n=`
+        <div class="arrc-canvas-graphic">✅</div>
+        <div class="arrc-canvas-title">Mark Submitted</div>
+        <div class="arrc-canvas-sub">Update assignment status in the academic ledger with voice verification</div>
+        <input type="text" class="arrc-canvas-input" id="canvas-submitted-name" placeholder="Assignment name..." value="Machine Learning Lab Quiz">
         <div class="arrc-canvas-controls">
           <button class="arrc-action-btn" id="canvas-btn-mark-submitted">✅ Mark Assignment Submitted</button>
         </div>
@@ -3642,7 +3705,7 @@ MANDATORY DIRECTIVE FOR ACTIVE DOCUMENT & QUESTION ANSWERING:
         <div class="arrc-canvas-title">${t.name}</div>
         <div class="arrc-canvas-sub">Autonomous workstation directive engine</div>
         <div class="arrc-canvas-controls">
-          <button class="arrc-action-btn" id="canvas-btn-generic-exec">⚡ Execute Capability</button>
+          <button class="arrc-action-btn" id="canvas-btn-generic-exec">⚡ Execute ${t.name}</button>
         </div>
       `}Kl.innerHTML=`
     <div class="arrc-canvas-header">
@@ -3652,7 +3715,7 @@ MANDATORY DIRECTIVE FOR ACTIVE DOCUMENT & QUESTION ANSWERING:
     <div class="arrc-canvas-body">
       ${n}
     </div>
-  `,$l(t.id)}var Ql=null;function $l(e){let t=document.getElementById(`canvas-btn-lock-instant`);t&&(t.onclick=()=>{$(`Lock Workstation (Instant)`,`rundll32.exe user32.dll,LockWorkStation`,`lock`,{post_antigravity:!1}),Yl(`🔒 Workstation Lock Directive Dispatched!`,`success`),Xl(`SECURITY > Lock directive transmitted via ntfy.sh and satellite relay.`,`cmd`)});let n=document.getElementById(`canvas-btn-lock-task`);n&&(n.onclick=()=>{$(`Arm Post-Task Lock`,``,`lock`,{post_antigravity:!0}),Yl(`🛡️ Post-Task Lock Armed!`,`info`)});let r=document.getElementById(`canvas-btn-unlock`);r&&(r.onclick=()=>{$(`Unlock Workstation`,``,`unlock`,{pin:`2006`}),Yl(`🔓 Workstation Unlock Requested (PIN 2006)`,`info`)});let i=document.getElementById(`canvas-btn-speak`);i&&(i.onclick=()=>{let e=document.getElementById(`canvas-speech-text`)?.value||`Hello Sir`;if($(`Speak: "${e}"`,``,`speak`,{text:e}),typeof window<`u`&&window.speechSynthesis)try{let t=new SpeechSynthesisUtterance(e);t.rate=1,t.pitch=.95,window.speechSynthesis.speak(t)}catch{}});let a=document.getElementById(`speech-pre-1`);a&&(a.onclick=()=>{let e=`Sir, your current task has finished with zero errors.`;if($(`Speak: Task Finished`,``,`speak`,{text:e}),typeof window<`u`&&window.speechSynthesis)try{window.speechSynthesis.speak(new SpeechSynthesisUtterance(e))}catch{}});let o=document.getElementById(`speech-pre-2`);o&&(o.onclick=()=>{let e=`Wake up Aasim, your systems require attention.`;if($(`Speak: Wake Up`,``,`speak`,{text:e}),typeof window<`u`&&window.speechSynthesis)try{window.speechSynthesis.speak(new SpeechSynthesisUtterance(e))}catch{}});let s=document.getElementById(`canvas-btn-screenshot`);s&&(s.onclick=async()=>{await $(`Capture Screen`,``,`screenshot`);let e=document.getElementById(`screenshot-preview-box`);e&&(e.innerHTML=`<span style="color:#2ed573;">✓ Screen Capture Dispatched to Workstation!</span>`)});let c=document.getElementById(`canvas-btn-clean-ram`);c&&(c.onclick=()=>$(`Clean RAM Cache`,`powershell -Command "[System.GC]::Collect()"`,`ram`));let l=document.getElementById(`canvas-media-play`);l&&(l.onclick=()=>$(`Media Play/Pause`,``,`media`,{action:`play_pause`}));let u=document.getElementById(`canvas-media-prev`);u&&(u.onclick=()=>$(`Media Previous`,``,`media`,{action:`prev`}));let d=document.getElementById(`canvas-media-next`);d&&(d.onclick=()=>$(`Media Next`,``,`media`,{action:`next`}));let f=document.getElementById(`canvas-media-mute`);f&&(f.onclick=()=>$(`Toggle Mute`,``,`media`,{action:`mute`}));let p=document.getElementById(`canvas-btn-open-url`);p&&(p.onclick=()=>{let e=document.getElementById(`canvas-web-url`)?.value||`https://google.com`;$(`Open ${e}`,``,`open_url`,{url:e});try{window.open(e,`_blank`)}catch{}});let m=document.getElementById(`web-pre-gh`);m&&(m.onclick=()=>{$(`Open GitHub`,``,`open_url`,{url:`https://github.com/Aasim41`});try{window.open(`https://github.com/Aasim41`,`_blank`)}catch{}});let h=document.getElementById(`web-pre-gpt`);h&&(h.onclick=()=>{$(`Open ChatGPT`,``,`open_url`,{url:`https://chatgpt.com`});try{window.open(`https://chatgpt.com`,`_blank`)}catch{}});let g=document.getElementById(`web-pre-yt`);g&&(g.onclick=()=>{$(`Open YouTube`,``,`open_url`,{url:`https://youtube.com`});try{window.open(`https://youtube.com`,`_blank`)}catch{}});let _=document.getElementById(`canvas-btn-search`);_&&(_.onclick=()=>{let e=document.getElementById(`canvas-search-query`)?.value||`JUET`,t=`https://www.google.com/search?q=${encodeURIComponent(e)}`;$(`Search Google: ${e}`,``,`open_url`,{url:t});try{window.open(t,`_blank`)}catch{}});let v=document.getElementById(`canvas-btn-yt-play`);v&&(v.onclick=()=>{let e=document.getElementById(`canvas-yt-query`)?.value||`music`,t=`https://www.youtube.com/results?search_query=${encodeURIComponent(e)}`;$(`Play YouTube: ${e}`,``,`open_url`,{url:t});try{window.open(t,`_blank`)}catch{}});let y=document.getElementById(`app-launch-vscode`);y&&(y.onclick=()=>$(`Launch VS Code`,`code`,`open_app`,{app:`vscode`}));let b=document.getElementById(`app-launch-chrome`);b&&(b.onclick=()=>$(`Launch Chrome`,`start chrome`,`open_app`,{app:`chrome`}));let x=document.getElementById(`app-launch-terminal`);x&&(x.onclick=()=>$(`Launch Terminal`,`start wt`,`open_app`,{app:`terminal`}));let S=document.getElementById(`app-launch-notepad`);S&&(S.onclick=()=>$(`Launch Notepad`,`notepad`,`open_app`,{app:`notepad`}));let C=document.getElementById(`app-launch-spotify`);C&&(C.onclick=()=>$(`Launch Spotify`,`start spotify`,`open_app`,{app:`spotify`}));let ee=document.getElementById(`app-launch-taskmgr`);ee&&(ee.onclick=()=>$(`Launch Task Manager`,`taskmgr`,`open_app`,{app:`taskmgr`}));let te=document.getElementById(`canvas-btn-save-note`);te&&(te.onclick=()=>{let e=document.getElementById(`canvas-note-text`)?.value||``;if(e.trim()){$(`Store Note`,`echo "${e}" >> user_notes.txt`,`execute`);try{let t=JSON.parse(localStorage.getItem(`jarvis_sovereign_notes`)||`[]`);t.unshift({id:`nt_`+Date.now(),text:e.trim(),time:new Date().toLocaleTimeString()}),localStorage.setItem(`jarvis_sovereign_notes`,JSON.stringify(t));let n=document.getElementById(`canvas-note-text`);n&&(n.value=``)}catch{}Yl(`Note stored in Living Memory!`,`success`),Xl(`NOTE > "${e.trim()}" saved to Living Memory & PC`,`success`)}});let w=(e,t)=>{Ql&&clearInterval(Ql);let n=e;Yl(`⏱️ ${t} Active: ${Math.floor(n/60)}m 00s`),Xl(`CHRONOS > ${t} started. Active countdown initiated.`,`info`),$(`Start ${t}`,``,`speak`,{text:`Sir, ${t} is now active.`}),Ql=setInterval(()=>{if(n--,n<=0){clearInterval(Ql),Ql=null,Yl(`🔔 ${t} Complete!`,`success`),Xl(`CHRONOS > 🔔 ${t} FINISHED!`,`success`);let e=`Sir, your ${t} has finished.`;if($(`Timer Finished: ${t}`,``,`speak`,{text:e}),typeof window<`u`&&window.speechSynthesis)try{window.speechSynthesis.speak(new SpeechSynthesisUtterance(e))}catch{}}},1e3)},ne=document.getElementById(`timer-5m`);ne&&(ne.onclick=()=>w(300,`5 Minute Timer`));let re=document.getElementById(`timer-25m`);re&&(re.onclick=()=>w(1500,`25 Minute Focus Session`));let T=document.getElementById(`timer-45m`);T&&(T.onclick=()=>w(2700,`45 Minute Deep Study`));let ie=document.getElementById(`timer-cancel`);ie&&(ie.onclick=()=>{Ql&&=(clearInterval(Ql),null),Yl(`🛑 Active timers cancelled.`,`info`),Xl(`CHRONOS > Active timers cancelled.`,`warning`)});let ae=document.getElementById(`canvas-btn-workmode`);ae&&(ae.onclick=()=>$(`Engage Work Mode`,`code "C:\\Users\\aasim\\.gemini\\antigravity\\scratch\\jarvis"`,`open_app`,{app:`vscode`}));let oe=document.getElementById(`canvas-btn-killchrome`);oe&&(oe.onclick=()=>$(`Kill Chrome`,`taskkill /F /IM chrome.exe`,`kill_chrome`));let se=document.getElementById(`canvas-btn-open-maps`);se&&(se.onclick=()=>{let e=document.getElementById(`canvas-maps-dest`)?.value||`Delhi`,t=`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(e)}`;$(`Directions: ${e}`,``,`open_url`,{url:t});try{window.open(t,`_blank`)}catch{}});let ce=document.getElementById(`canvas-btn-weather-delhi`);ce&&(ce.onclick=()=>{let e=`https://www.google.com/search?q=delhi+weather`;$(`Check Delhi Weather`,``,`open_url`,{url:e});try{window.open(e,`_blank`)}catch{}});let le=document.getElementById(`canvas-btn-open-gmail`);le&&(le.onclick=()=>{let e=document.getElementById(`canvas-email-to`)?.value||``,t=document.getElementById(`canvas-email-subject`)?.value||`Update`,n=`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(e)}&su=${encodeURIComponent(t)}`;$(`Open Gmail Draft`,``,`open_url`,{url:n});try{window.open(n,`_blank`)}catch{}});let ue=document.getElementById(`canvas-btn-search-file`);ue&&(ue.onclick=()=>{let e=document.getElementById(`canvas-file-query`)?.value||`Lumina`;$(`Find File: ${e}`,`powershell -Command "Get-ChildItem -Path C:\\Users\\aasim -Recurse -Filter '*${e}*' -ErrorAction SilentlyContinue | Select-Object -First 1 | ForEach-Object { Invoke-Item $_.FullName }"`,`execute`),Yl(`Searching workstation for: ${e}`,`info`)});let de=document.getElementById(`canvas-btn-mark-submitted`);de&&(de.onclick=()=>{Yl(`Assignment verified and marked submitted! ✅`,`success`),Xl(`ASSIGNMENT > Marked submitted in J.A.R.V.I.S academic ledger.`,`success`)})}function eu(e){if(!e)return;Jl();let t=u?u():{mode:`STANDALONE_MOBILE`},n=t.localOnline?`WORKSTATION LINK`:t.remoteOnline?`REMOTE TUNNEL`:`SOVEREIGN HUD`,r=t.localOnline||t.remoteOnline?`online`:`standalone`,i=document.createElement(`div`);i.className=`jarvis-system-controls`,i.innerHTML=`
+  `,$l(t.id)}var Ql=null;function $l(e){let t=document.getElementById(`canvas-btn-open-url`);t&&(t.onclick=()=>{let e=document.getElementById(`canvas-web-url`)?.value||`https://google.com`;$(`Open ${e}`,``,`open_url`,{url:e});try{window.open(e,`_blank`)}catch{}});let n=document.getElementById(`web-pre-gh`);n&&(n.onclick=()=>{$(`Open GitHub`,``,`open_url`,{url:`https://github.com/Aasim41`});try{window.open(`https://github.com/Aasim41`,`_blank`)}catch{}});let r=document.getElementById(`web-pre-gpt`);r&&(r.onclick=()=>{$(`Open ChatGPT`,``,`open_url`,{url:`https://chatgpt.com`});try{window.open(`https://chatgpt.com`,`_blank`)}catch{}});let i=document.getElementById(`web-pre-yt`);i&&(i.onclick=()=>{$(`Open YouTube`,``,`open_url`,{url:`https://youtube.com`});try{window.open(`https://youtube.com`,`_blank`)}catch{}});let a=document.getElementById(`canvas-btn-search`);a&&(a.onclick=()=>{let e=document.getElementById(`canvas-search-query`)?.value||`JUET`,t=`https://www.google.com/search?q=${encodeURIComponent(e)}`;$(`Search Google: ${e}`,``,`open_url`,{url:t});try{window.open(t,`_blank`)}catch{}});let o=document.getElementById(`search-pre-webkiosk`);o&&(o.onclick=()=>{let e=`https://www.google.com/search?q=JUET+Webkiosk`;$(`Search JUET`,``,`open_url`,{url:e});try{window.open(e,`_blank`)}catch{}});let s=document.getElementById(`search-pre-news`);s&&(s.onclick=()=>{let e=`https://www.google.com/search?q=Latest+Technology+News`;$(`Search Tech News`,``,`open_url`,{url:e});try{window.open(e,`_blank`)}catch{}});let c=document.getElementById(`search-pre-weather`);c&&(c.onclick=()=>{let e=`https://www.google.com/search?q=Guna+weather`;$(`Search Weather`,``,`open_url`,{url:e});try{window.open(e,`_blank`)}catch{}});let l=document.getElementById(`canvas-btn-yt-play`);l&&(l.onclick=()=>{let e=document.getElementById(`canvas-yt-query`)?.value||`music`,t=`https://www.youtube.com/results?search_query=${encodeURIComponent(e)}`;$(`Play YouTube: ${e}`,``,`open_url`,{url:t});try{window.open(t,`_blank`)}catch{}});let u=document.getElementById(`yt-pre-arijit`);u&&(u.onclick=()=>{let e=`https://www.youtube.com/results?search_query=Arijit+Singh+top+songs`;$(`Play Arijit Singh`,``,`open_url`,{url:e});try{window.open(e,`_blank`)}catch{}});let d=document.getElementById(`yt-pre-lofi`);d&&(d.onclick=()=>{let e=`https://www.youtube.com/results?search_query=lofi+hip+hop+radio`;$(`Play Lo-Fi`,``,`open_url`,{url:e});try{window.open(e,`_blank`)}catch{}});let f=document.getElementById(`yt-pre-coke`);f&&(f.onclick=()=>{let e=`https://www.youtube.com/results?search_query=Coke+Studio+hits`;$(`Play Coke Studio`,``,`open_url`,{url:e});try{window.open(e,`_blank`)}catch{}});let p=document.getElementById(`app-launch-vscode`);p&&(p.onclick=()=>$(`Launch VS Code`,`code`,`open_app`,{app:`vscode`}));let m=document.getElementById(`app-launch-chrome`);m&&(m.onclick=()=>$(`Launch Chrome`,`start chrome`,`open_app`,{app:`chrome`}));let h=document.getElementById(`app-launch-terminal`);h&&(h.onclick=()=>$(`Launch Terminal`,`start wt`,`open_app`,{app:`terminal`}));let g=document.getElementById(`app-launch-notepad`);g&&(g.onclick=()=>$(`Launch Notepad`,`notepad`,`open_app`,{app:`notepad`}));let _=document.getElementById(`app-launch-spotify`);_&&(_.onclick=()=>$(`Launch Spotify`,`start spotify`,`open_app`,{app:`spotify`}));let v=document.getElementById(`app-launch-taskmgr`);v&&(v.onclick=()=>$(`Launch Task Manager`,`taskmgr`,`open_app`,{app:`taskmgr`}));let y=document.getElementById(`canvas-btn-take-note`);y&&(y.onclick=()=>{let e=document.getElementById(`canvas-take-note-text`)?.value||``;if(e.trim()){$(`Store Note`,`echo "${e.replace(/"/g,`'`)}" >> user_notes.txt`,`execute`);try{let t=JSON.parse(localStorage.getItem(`jarvis_sovereign_notes`)||`[]`);t.unshift({id:`nt_`+Date.now(),text:e.trim(),time:new Date().toLocaleTimeString()}),localStorage.setItem(`jarvis_sovereign_notes`,JSON.stringify(t));let n=document.getElementById(`canvas-take-note-text`);n&&(n.value=``)}catch{}Yl(`Note stored in Living Memory & PC!`,`success`),Xl(`NOTE > "${e.trim()}" saved to Living Memory & PC`,`success`)}});let b=document.getElementById(`canvas-btn-refresh-notes`);b&&(b.onclick=()=>{Zl(`read_notes`),Yl(`Living Memory notes refreshed!`,`info`)});let x=document.getElementById(`canvas-btn-speak-notes`);x&&(x.onclick=()=>{let e=JSON.parse(localStorage.getItem(`jarvis_sovereign_notes`)||`[]`),t=`Sir, recalling your recent notes: ${e.length>0?e.slice(0,3).map(e=>e.text).join(`. `):`Minneee birthday is July 13th. JUET B.Tech Data Science 8.05 CGPA.`}`;if($(`Read Notes Aloud`,``,`speak`,{text:t}),typeof window<`u`&&window.speechSynthesis)try{window.speechSynthesis.speak(new SpeechSynthesisUtterance(t))}catch{}});let S=document.getElementById(`canvas-btn-store-vault-note`);S&&(S.onclick=()=>{let e=document.getElementById(`canvas-vault-note-title`)?.value||`Note`,t=document.getElementById(`canvas-vault-note-text`)?.value||``;if(!t.trim())return;let n=`[${e}] ${t.trim()}`;$(`Vault: ${e}`,`echo "${n.replace(/"/g,`'`)}" >> vault_notes.txt`,`execute`);try{let e=JSON.parse(localStorage.getItem(`jarvis_sovereign_notes`)||`[]`);e.unshift({id:`vt_`+Date.now(),text:n,time:new Date().toLocaleTimeString()}),localStorage.setItem(`jarvis_sovereign_notes`,JSON.stringify(e));let t=document.getElementById(`canvas-vault-note-text`);t&&(t.value=``)}catch{}Yl(`Knowledge committed to Sovereign Vault!`,`success`),Xl(`VAULT > "${e}" committed to storage.`,`success`)});let C=document.getElementById(`canvas-btn-refresh-battery`);C&&(C.onclick=async()=>{Yl(`Querying live power telemetry...`,`info`);try{if(navigator&&navigator.getBattery){let e=await navigator.getBattery(),t=Math.round(e.level*100),n=document.getElementById(`bat-level-val`),r=document.getElementById(`bat-status-val`);n&&(n.textContent=`${t}%`),r&&(r.textContent=e.charging?`Charging (AC)`:`Discharging`),Yl(`Battery Telemetry: ${t}% (${e.charging?`Charging`:`Battery`})`,`success`)}else Yl(`Workstation Telemetry: 100% (AC Adapter Plugged In)`,`success`)}catch{Yl(`Power telemetry synchronized.`,`success`)}});let ee=document.getElementById(`canvas-btn-clean-ram`);ee&&(ee.onclick=()=>$(`Clean RAM Cache`,`powershell -Command "[System.GC]::Collect()"`,`ram`));let te=document.getElementById(`canvas-btn-lock-instant`);te&&(te.onclick=()=>{$(`Lock Workstation (Instant)`,`rundll32.exe user32.dll,LockWorkStation`,`lock`,{post_antigravity:!1}),Yl(`🔒 Workstation Lock Directive Dispatched!`,`success`),Xl(`SECURITY > Lock directive transmitted via ntfy.sh and satellite relay.`,`cmd`)});let w=document.getElementById(`canvas-btn-lock-task`);w&&(w.onclick=()=>{$(`Arm Post-Task Lock`,``,`lock`,{post_antigravity:!0}),Yl(`🛡️ Post-Task Lock Armed!`,`info`)});let ne=document.getElementById(`canvas-btn-unlock`);ne&&(ne.onclick=()=>{$(`Unlock Workstation`,``,`unlock`,{pin:`2006`}),Yl(`🔓 Workstation Unlock Requested (PIN 2006)`,`info`)});let re=document.getElementById(`canvas-media-play`);re&&(re.onclick=()=>$(`Media Play/Pause`,``,`media`,{action:`play_pause`}));let T=document.getElementById(`canvas-media-prev`);T&&(T.onclick=()=>$(`Media Previous`,``,`media`,{action:`prev`}));let ie=document.getElementById(`canvas-media-next`);ie&&(ie.onclick=()=>$(`Media Next`,``,`media`,{action:`next`}));let ae=document.getElementById(`canvas-media-mute`);ae&&(ae.onclick=()=>$(`Toggle Mute`,``,`media`,{action:`mute`}));let oe=document.getElementById(`canvas-btn-speak`);oe&&(oe.onclick=()=>{let e=document.getElementById(`canvas-speech-text`)?.value||`Hello Sir`;if($(`Speak: "${e}"`,``,`speak`,{text:e}),typeof window<`u`&&window.speechSynthesis)try{let t=new SpeechSynthesisUtterance(e);t.rate=1,t.pitch=.95,window.speechSynthesis.speak(t)}catch{}});let se=document.getElementById(`speech-pre-1`);se&&(se.onclick=()=>{let e=`Sir, your current task has finished with zero errors.`;if($(`Speak: Task Finished`,``,`speak`,{text:e}),typeof window<`u`&&window.speechSynthesis)try{window.speechSynthesis.speak(new SpeechSynthesisUtterance(e))}catch{}});let ce=document.getElementById(`speech-pre-2`);ce&&(ce.onclick=()=>{let e=`Wake up Aasim, your systems require attention.`;if($(`Speak: Wake Up`,``,`speak`,{text:e}),typeof window<`u`&&window.speechSynthesis)try{window.speechSynthesis.speak(new SpeechSynthesisUtterance(e))}catch{}});let le=document.getElementById(`canvas-btn-screenshot`);le&&(le.onclick=async()=>{await $(`Capture Screen`,``,`screenshot`);let e=document.getElementById(`screenshot-preview-box`);e&&(e.innerHTML=`<span style="color:#2ed573;">✓ Screen Capture Dispatched to Workstation!</span>`)});let ue=(e,t)=>{Ql&&clearInterval(Ql);let n=e;Yl(`⏱️ ${t} Active: ${Math.floor(n/60)}m 00s`),Xl(`CHRONOS > ${t} started. Active countdown initiated.`,`info`),$(`Start ${t}`,``,`speak`,{text:`Sir, ${t} is now active.`}),Ql=setInterval(()=>{if(n--,n<=0){clearInterval(Ql),Ql=null,Yl(`🔔 ${t} Complete!`,`success`),Xl(`CHRONOS > 🔔 ${t} FINISHED!`,`success`);let e=`Sir, your ${t} has finished.`;if($(`Timer Finished: ${t}`,``,`speak`,{text:e}),typeof window<`u`&&window.speechSynthesis)try{window.speechSynthesis.speak(new SpeechSynthesisUtterance(e))}catch{}}},1e3)},de=document.getElementById(`timer-5m`);de&&(de.onclick=()=>ue(300,`5 Minute Timer`));let fe=document.getElementById(`timer-25m`);fe&&(fe.onclick=()=>ue(1500,`25 Minute Focus Session`));let pe=document.getElementById(`timer-45m`);pe&&(pe.onclick=()=>ue(2700,`45 Minute Deep Study`));let me=document.getElementById(`timer-cancel`);me&&(me.onclick=()=>{Ql&&=(clearInterval(Ql),null),Yl(`🛑 Active timers cancelled.`,`info`),Xl(`CHRONOS > Active timers cancelled.`,`warning`)});let he=document.getElementById(`canvas-btn-open-gmail`);he&&(he.onclick=()=>{let e=document.getElementById(`canvas-email-to`)?.value||``,t=document.getElementById(`canvas-email-subject`)?.value||`Update from Aasim`,n=`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(e)}&su=${encodeURIComponent(t)}`;$(`Open Gmail Draft`,``,`open_url`,{url:n});try{window.open(n,`_blank`)}catch{}});let ge=document.getElementById(`canvas-btn-open-maps`);ge&&(ge.onclick=()=>{let e=document.getElementById(`canvas-maps-dest`)?.value||`Guna Railway Station`,t=`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(e)}`;$(`Directions: ${e}`,``,`open_url`,{url:t});try{window.open(t,`_blank`)}catch{}});let _e=document.getElementById(`maps-pre-guna`);_e&&(_e.onclick=()=>{let e=`https://www.google.com/maps/dir/?api=1&destination=Guna+Railway+Station`;$(`Directions: Guna Stn`,``,`open_url`,{url:e});try{window.open(e,`_blank`)}catch{}});let ve=document.getElementById(`maps-pre-mau`);ve&&(ve.onclick=()=>{let e=`https://www.google.com/maps/dir/?api=1&destination=Mau+Uttar+Pradesh`;$(`Directions: Mau`,``,`open_url`,{url:e});try{window.open(e,`_blank`)}catch{}});let ye=document.getElementById(`maps-pre-delhi`);ye&&(ye.onclick=()=>{let e=`https://www.google.com/maps/dir/?api=1&destination=New+Delhi`;$(`Directions: Delhi`,``,`open_url`,{url:e});try{window.open(e,`_blank`)}catch{}});let be=document.getElementById(`canvas-btn-check-weather`);be&&(be.onclick=()=>{let e=document.getElementById(`canvas-weather-city`)?.value||`Guna`,t=`https://www.google.com/search?q=${encodeURIComponent(e+` weather`)}`;$(`Check ${e} Weather`,``,`open_url`,{url:t});try{window.open(t,`_blank`)}catch{}});let xe=document.getElementById(`wth-pre-guna`);xe&&(xe.onclick=()=>{let e=`https://www.google.com/search?q=Guna+weather`;$(`Check Guna Weather`,``,`open_url`,{url:e});try{window.open(e,`_blank`)}catch{}});let Se=document.getElementById(`wth-pre-mau`);Se&&(Se.onclick=()=>{let e=`https://www.google.com/search?q=Mau+weather`;$(`Check Mau Weather`,``,`open_url`,{url:e});try{window.open(e,`_blank`)}catch{}});let E=document.getElementById(`wth-pre-delhi`);E&&(E.onclick=()=>{let e=`https://www.google.com/search?q=Delhi+weather`;$(`Check Delhi Weather`,``,`open_url`,{url:e});try{window.open(e,`_blank`)}catch{}});let Ce=document.getElementById(`canvas-btn-workmode`);Ce&&(Ce.onclick=()=>$(`Engage Work Mode`,`code "C:Usersaasim.geminiantigravityscratchjarvis"`,`open_app`,{app:`vscode`}));let we=document.getElementById(`canvas-btn-killchrome`);we&&(we.onclick=()=>$(`Kill Chrome`,`taskkill /F /IM chrome.exe`,`kill_chrome`));let Te=document.getElementById(`canvas-btn-search-file`);Te&&(Te.onclick=()=>{let e=document.getElementById(`canvas-file-query`)?.value||`Lumina`;$(`Find File: ${e}`,`powershell -Command "Get-ChildItem -Path C:\Users\aasim -Recurse -Filter '*${e}*' -ErrorAction SilentlyContinue | Select-Object -First 1 | ForEach-Object { Invoke-Item $_.FullName }"`,`execute`),Yl(`Searching workstation for: ${e}`,`info`)});let Ee=document.getElementById(`focus-btn-25m`);Ee&&(Ee.onclick=()=>ue(1500,`25m Pomodoro Focus Session`));let De=document.getElementById(`focus-btn-50m`);De&&(De.onclick=()=>ue(3e3,`50m Deep Work Interval`));let Oe=document.getElementById(`focus-btn-cancel`);Oe&&(Oe.onclick=()=>{Ql&&=(clearInterval(Ql),null),Yl(`🛑 Focus session concluded.`,`info`),Xl(`CHRONOS > Focus session cancelled.`,`warning`)});let ke=document.getElementById(`canvas-btn-add-deadline`);ke&&(ke.onclick=()=>{let e=document.getElementById(`canvas-deadline-title`)?.value||`Assignment`,t=document.getElementById(`canvas-deadline-date`)?.value||new Date().toLocaleDateString();try{let n=JSON.parse(localStorage.getItem(`jarvis_deadlines`)||`[]`);n.unshift({id:`dl_`+Date.now(),title:e,date:t,status:`pending`}),localStorage.setItem(`jarvis_deadlines`,JSON.stringify(n))}catch{}if($(`Deadline Added: ${e}`,``,`speak`,{text:`Sir, deadline for ${e} scheduled for ${t}.`}),Yl(`Deadline Scheduled: ${e}`,`success`),Xl(`CALENDAR > Deadline added: "${e}" due ${t}`,`success`),typeof window<`u`&&window.speechSynthesis)try{window.speechSynthesis.speak(new SpeechSynthesisUtterance(`Sir, deadline scheduled: ${e}`))}catch{}});let Ae=document.getElementById(`canvas-btn-refresh-due`);Ae&&(Ae.onclick=()=>{Zl(`what_is_due`),Yl(`Academic due dates refreshed!`,`info`)});let je=document.getElementById(`canvas-btn-speak-due`);je&&(je.onclick=()=>{let e=`Sir, your pending deadlines are: Machine Learning Lab Quiz due November 2nd, and High Performance Computing Lab due November 6th.`;try{let t=JSON.parse(localStorage.getItem(`jarvis_deadlines`)||`[]`);if(t.length>0){let n=t.filter(e=>e.status!==`submitted`);e=n.length>0?`Sir, your upcoming deadlines are: `+n.map(e=>`${e.title} due ${e.date}`).join(`, `):`Sir, all academic milestones and assignments are completed and verified.`}}catch{}if($(`Speak What Is Due`,``,`speak`,{text:e}),typeof window<`u`&&window.speechSynthesis)try{window.speechSynthesis.speak(new SpeechSynthesisUtterance(e))}catch{}});let Me=document.getElementById(`canvas-btn-mark-submitted`);Me&&(Me.onclick=()=>{let e=document.getElementById(`canvas-submitted-name`)?.value||`Assignment`;try{let t=JSON.parse(localStorage.getItem(`jarvis_deadlines`)||`[]`),n=t.find(t=>t.title.toLowerCase().includes(e.toLowerCase()));n?n.status=`submitted`:t.unshift({id:`dl_`+Date.now(),title:e,date:new Date().toLocaleDateString(),status:`submitted`}),localStorage.setItem(`jarvis_deadlines`,JSON.stringify(t))}catch{}let t=`Sir, ${e} has been verified and marked submitted in your academic ledger.`;if($(`Submitted: ${e}`,``,`speak`,{text:t}),Yl(`Assignment marked submitted: ${e}! ✅`,`success`),Xl(`ASSIGNMENT > "${e}" marked submitted in J.A.R.V.I.S academic ledger.`,`success`),typeof window<`u`&&window.speechSynthesis)try{window.speechSynthesis.speak(new SpeechSynthesisUtterance(t))}catch{}});let Ne=document.getElementById(`canvas-btn-generic-exec`);Ne&&(Ne.onclick=()=>{let t=ql.find(t=>t.id===e),n=t?t.name:e;$(`Execute: ${n}`,``,`speak`,{text:`Sir, executing capability ${n}.`}),Yl(`Capability Executed: ${n}`,`success`),Xl(`CAPABILITY > Dispatched directive for ${n}`,`cmd`)})}function eu(e){if(!e)return;Jl();let t=u?u():{mode:`STANDALONE_MOBILE`},n=t.localOnline?`WORKSTATION LINK`:t.remoteOnline?`REMOTE TUNNEL`:`SOVEREIGN HUD`,r=t.localOnline||t.remoteOnline?`online`:`standalone`,i=document.createElement(`div`);i.className=`jarvis-system-controls`,i.innerHTML=`
     <div class="controls-header-strip">
       <div class="controls-title">
         <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
